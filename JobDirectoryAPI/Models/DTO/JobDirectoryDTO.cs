@@ -7,8 +7,8 @@ namespace JobDirectoryAPI.Models.DTO
         [Required]
         public int Id { get; set; }
         public string UserName { get; set; }
-        public EmailAddressAttribute Email { get; set; }
-        public PhoneAttribute PhoneNumber { get; set; }
+        public string Email { get; set; }
+        public int PhoneNumber { get; set; }
         public string SkillSets { get; set; }
         public string Hobby { get; set; }
     }

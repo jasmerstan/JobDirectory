@@ -8,7 +8,7 @@ using System.Net;
 
 namespace JobDirectoryAPI.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/JobDirectoryAPI")]
     [ApiController]
     public class JobDirectoryAPIController : ControllerBase
     {
@@ -50,16 +50,16 @@ namespace JobDirectoryAPI.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public async Task<ActionResult<APIResponse>> GetJobDirectory(int id, string name)
+        public async Task<ActionResult<APIResponse>> GetJobDirectory(int id)
         {
             try
             {
-                //if (id == 0)
-                //{
-                //    _response.StatusCode = HttpStatusCode.BadRequest;
-                //    return BadRequest(_response);
-                //}
-                var jobDir = await _dbJobDir.GetAsync(x => x.UserName == name);
+                if (id == 0)
+                {
+                    _response.StatusCode = HttpStatusCode.BadRequest;
+                    return BadRequest(_response);
+                }
+                var jobDir = await _dbJobDir.GetAsync(x => x.Id == id);
                 if (jobDir == null)
                 {
                     _response.StatusCode = HttpStatusCode.NotFound;
@@ -83,7 +83,7 @@ namespace JobDirectoryAPI.Controllers
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<ActionResult<APIResponse>> CreateVilla([FromBody] JobDirectoryDTO createDTO)
+        public async Task<ActionResult<APIResponse>> CreateVilla([FromBody] JobDirectoryCreateDTO createDTO)
         {
             try
             {
@@ -116,17 +116,12 @@ namespace JobDirectoryAPI.Controllers
         [HttpDelete("{id:int}", Name = "DeleteJobDirectory")]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        [ProducesResponseType(StatusCodes.Status204NoContent)]
-        //public async Task<IActionResult> DeleteVilla(int id)
-        public async Task<ActionResult<APIResponse>> DeleteJobDirectory(int id, string name)
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        public async Task<ActionResult<APIResponse>> DeleteJobDirectory(int id)
         {
             try
             {
-                //if (id == 0)
-                //{
-                //    return BadRequest();
-                //}
-                var jobDir = await _dbJobDir.GetAsync(x => x.UserName == name);
+                var jobDir = await _dbJobDir.GetAsync(x => x.Id == id);
                 if (jobDir == null)
                 {
                     return NotFound();
@@ -151,13 +146,11 @@ namespace JobDirectoryAPI.Controllers
         [HttpPut("{id:int}", Name = "UpdateJobDirectory")]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
-        public async Task<ActionResult<APIResponse>> UpdateJobDirectory(int id, string name, [FromBody] JobDirectoryDTO jobDirectoryDTO)
+        public async Task<ActionResult<APIResponse>> UpdateJobDirectory(int id, [FromBody] JobDirectoryDTO jobDirectoryDTO)
         {
             try
             {
-                //if (jobDirectoryDTO == null || id != jobDirectoryDTO.Id)
-
-                if (jobDirectoryDTO == null)
+                if (jobDirectoryDTO == null || id != jobDirectoryDTO.Id)
                 {
                     return BadRequest();
                 }
@@ -181,14 +174,13 @@ namespace JobDirectoryAPI.Controllers
         [HttpPatch("{id:int}", Name = "UpdatePartialVilla")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public async Task<IActionResult> UpdatePartialVilla(int id, string name, JsonPatchDocument<JobDirectoryDTO> patchDTO)
+        public async Task<IActionResult> UpdatePartialVilla(int id, JsonPatchDocument<JobDirectoryDTO> patchDTO)
         {
-            //if (patchDTO == null || id == 0)
-            if (patchDTO == null)
+            if (patchDTO == null || id == 0)
             {
                 return BadRequest();
             }
-            var jobDir = await _dbJobDir.GetAsync(x => x.UserName == name, tracked: false);
+            var jobDir = await _dbJobDir.GetAsync(x => x.Id == id, tracked: false);
             if (jobDir == null)
             {
                 return NotFound();

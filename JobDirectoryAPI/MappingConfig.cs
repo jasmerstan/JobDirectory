@@ -9,6 +9,7 @@ namespace JobDirectoryAPI
         public MappingConfig()
         {
             CreateMap<JobDirectory, JobDirectoryDTO>().ReverseMap();
+            CreateMap<JobDirectory, JobDirectoryCreateDTO>().ReverseMap();
         }
     }
 }

@@ -11,7 +11,7 @@ namespace JobDirectoryAPI.Repository
         {
             _db = db;
         }
-        public async  Task<JobDirectory> UpdateAsync(JobDirectory entity)
+        public async Task<JobDirectory> UpdateAsync(JobDirectory entity)
         {
             entity.UpdatedDate = DateTime.Now;
             _db.JobDirectories.Update(entity);

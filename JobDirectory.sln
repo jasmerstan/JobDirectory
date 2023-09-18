@@ -5,6 +5,10 @@ VisualStudioVersion = 17.6.33829.357
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JobDirectoryAPI", "JobDirectoryAPI\JobDirectoryAPI.csproj", "{4E193F31-C4DA-4A4E-B935-6B5B1BA036E6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JobDirectoryWeb", "JobDirectoryWeb\JobDirectoryWeb.csproj", "{16B7DBA7-E3F5-401C-88D4-367E56CE72E9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JobDirectoryUtility", "JobDirectoryUtility\JobDirectoryUtility.csproj", "{379A2403-FFDF-40CB-838D-0F9A5F6A80E3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{4E193F31-C4DA-4A4E-B935-6B5B1BA036E6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4E193F31-C4DA-4A4E-B935-6B5B1BA036E6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4E193F31-C4DA-4A4E-B935-6B5B1BA036E6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{16B7DBA7-E3F5-401C-88D4-367E56CE72E9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{16B7DBA7-E3F5-401C-88D4-367E56CE72E9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{16B7DBA7-E3F5-401C-88D4-367E56CE72E9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{16B7DBA7-E3F5-401C-88D4-367E56CE72E9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{379A2403-FFDF-40CB-838D-0F9A5F6A80E3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{379A2403-FFDF-40CB-838D-0F9A5F6A80E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{379A2403-FFDF-40CB-838D-0F9A5F6A80E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{379A2403-FFDF-40CB-838D-0F9A5F6A80E3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
